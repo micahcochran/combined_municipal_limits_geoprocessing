@@ -1,0 +1,6 @@
+# these version are pegged arbitrarily to the most current update of the script 2023-04-30
+
+python-dateutil==2.8.2
+fiona==1.9.3
+geopandas==0.12.2
+pandas
