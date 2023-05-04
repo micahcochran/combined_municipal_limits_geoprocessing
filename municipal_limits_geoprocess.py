@@ -244,7 +244,8 @@ class MunicipalLimitsGeoProcess(object):
         self.decatur = DecaturLimitLayer(self.find_most_recent_shp('decatur/'))
         self.huntsville = HuntsvilleLimitLayer(self.find_most_recent_shp('huntsville/'))
 
-        self.madison = MadisonLimitLayer(self.base_folder + 'madison/2016 09 02/MadCityLimits_9-2-16.shp')
+        # self.madison = MadisonLimitLayer(self.base_folder + 'madison/2016 09 02/MadCityLimits_9-2-16.shp')
+        self.madison = MadisonLimitLayer(self.find_most_recent_shp('madison/'))
         self.towns = TownsLimitLayer(filename='./municipal_limits/MunicipalLimits.gdb', 
                                 driver='OpenFileGDB', layer="MunicipalBoundary")
 
@@ -358,7 +359,7 @@ class MunicipalLimitsGeoProcess(object):
             folders = [x for x in shp_folder.iterdir() if x.is_dir()]
             folders.sort(reverse=True)
             for folder in folders:
-                # checik for a shapefile within the folder
+                # check for a shapefile within the folder
                 result = folder.glob('*.shp')
                 for shp_filename_path in result:
                     return shp_filename_path
@@ -366,7 +367,9 @@ class MunicipalLimitsGeoProcess(object):
 
 
 if __name__ == '__main__':
-    logging.basicConfig(format='%(levelname)s : %(message)s', level=logging.DEBUG)
+    # DEBUG is a bit chatty
+    # logging.basicConfig(format='%(levelname)s : %(message)s', level=logging.DEBUG)
+    logging.basicConfig(format='%(levelname)s : %(message)s', level=logging.INFO)
     logging.info( "Started:  {0}".format(time.asctime()) )
     
     #### THIS IS THE NEW LOCATION TO STORE ALL OF THE CITY LIMIT DATA FOR ETL PROCESSING ####

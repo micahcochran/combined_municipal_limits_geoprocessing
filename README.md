@@ -2,7 +2,7 @@
 
 ## Description
 
-A Python command line ETL (Extract Tranform Load) script that combines City Limits from multiple GIS layers into one GIS layer using a unified schema for Limestone County (Alabama, USA).  This takes five (5) files, with four (4) different schema and two (2) projections.  The script merges the files are merged into one layer with one projection and one schema.
+A Python command line ETL (Extract Transform Load) script that combines multiple City Limits layers into a unified schema for Limestone County (Alabama, USA).  This takes five (5) files, with four (4) different schema and two (2) projections.  The script merges the files are merged into one layer with one projection and one schema.
 
 The GIS data is stored in the  [municipal_limits/](/municipal_limits) folder.  The provided GIS data is AS IS.  It is provided for the purpose of testing the script.  If you need current data, contact the respective local governments for current official data.  
  
@@ -68,6 +68,7 @@ Modifications based on new version in `gislayer.py`:
 3. Added type hints  in areas where code that I worked on.  (Type hints were new standard feature in Python 3.5.)  These help with readability.
 4. Combining layers had to be done differently using the geopandas `concat()`.  Perhaps there are more data checks in place.
 5. Had to do some fiddling to convert date strings for some of the layers into pandas Timestamps.
+6. Quiet debug messages.
 
 GDAL 3.6.x (first released on 2022-11-11) in the OpenFileGDB driver added supports writing to File Geodatabases for ArcGIS 10.x.  Before this, you had to install FileGDB, which was linked to ESRI's proprietary code for writing the File GeoDatabases.  Because of that Fiona would make it easy to write ESRI File Geodatabases. 
 
